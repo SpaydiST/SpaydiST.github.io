@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload to GitHub</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #b19cd9, #f3e7e9);
+        }
+        .container {
+            background-color: #9370db;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .upload-btn, .send-btn {
+            background-color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        input[type="file"] {
+            background-color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="file" id="fileUpload" accept="image/*"><br>
+        <input type="text" placeholder="Enter file name"><br>
+        <button class="send-btn">Send to GitHub</button>
+    </div>
+</body>
+</html>
