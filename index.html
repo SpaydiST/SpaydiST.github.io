@@ -1,11 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload to GitHub</title>
-    <style>
+	<meta charset="UTF-8">
+	<title>Upload</title>
+      <style>
         body {
             display: flex;
             justify-content: center;
@@ -19,7 +17,7 @@
             border-radius: 10px;
             text-align: center;
         }
-        .upload-btn, .send-btn {
+        input[type="button"] {
             background-color: white;
             border: none;
             border-radius: 20px;
@@ -44,10 +42,31 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <input type="file" id="fileUpload" accept="image/*"><br>
-        <input type="text" placeholder="Enter file name"><br>
-        <button class="send-btn">Send to GitHub</button>
-    </div>
+
+	<?php
+	if($_FILES['image']['tmp_name']){
+		move_uploaded_file($_FILES['image']['tmp_name'], '/test/images/'.rand(1, 1000).'.jpg');
+	}
+	?>
+
+
+	<form enctype="multipart/form-data" method="POST">
+		<input type="file" name="image"><br>
+		<input type="button" onclick="upload(this)">
+	</form>
+
+	<script>
+	function upload(input){
+		var xhr = new XMLHttpRequest();
+		xhr.upload.onprogress = function(e) {
+			console.log(e.loaded, e.total)
+		}
+		xhr.upload.onload = function(e) {
+			console.log('file upload')
+		}
+
+		xhr.open("POST", "/test/uploadfile.php", true);
+		xhr.send(new FormData(input.parentElement));
+	}
+	</script>
 </body>
-</html>
